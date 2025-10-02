@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив фотографий - Казачья слава Дона</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Казачья слава Дона</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="history.html">Интересные моменты истории</a></li>
+                <li><a href="documents.html">Архив документов</a></li>
+                <li><a href="photos.html">Архив фотографий</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Архив фотографий XIX века</h2>
+        <p>Галерея снимков быта донских казаков: охота, служба, смотры. Кликните для увеличения (пока placeholder'ы; добавьте реальные фото позже).</p>
+        <div class="gallery">
+            <div class="gallery-item" onclick="showModal('photo-modal-1')">
+                <img src="placeholder.jpg" alt="Казаки на охоте">
+                <p>Казаки, возвращающиеся с охоты</p>
+            </div>
+            <div class="gallery-item" onclick="showModal('photo-modal-2')">
+                <img src="placeholder.jpg" alt="Казаки перед службой">
+                <p>Казаки перед выходом на службу</p>
+            </div>
+            <div class="gallery-item" onclick="showModal('photo-modal-3')">
+                <img src="placeholder.jpg" alt="Смотр атаманом">
+                <p>Смотр казаков атаманом</p>
+            </div>
+            <!-- Добавьте больше -->
+        </div>
+    </main>
+
+    <!-- Модальные окна для фото -->
+    <div id="photo-modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('photo-modal-1')">&times;</span>
+            <img src="placeholder.jpg" alt="Казаки на охоте" style="width:100%; height:auto;">
+            <p>Описание: Казаки XIX века после удачной охоты. Фото Ивана Болдырева.</p>
+        </div>
+    </div>
+    <div id="photo-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('photo-modal-2')">&times;</span>
+            <img src="placeholder.jpg" alt="Казаки перед службой" style="width:100%; height:auto;">
+            <p>Описание: Подготовка к военной службе в Донском войске.</p>
+        </div>
+    </div>
+    <div id="photo-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('photo-modal-3')">&times;</span>
+            <img src="placeholder.jpg" alt="Смотр атаманом" style="width:100%; height:auto;">
+            <p>Описание: Атаман инспектирует казаков перед походом.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Казачья слава Дона. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
