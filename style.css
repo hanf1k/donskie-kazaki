@@ -104,6 +104,10 @@ h1, h2 {
     animation: fadeInUp 1s ease-out 0.2s both; /* Задержка для stagger */
 }
 
+.hero h2 {
+    color: #ffd700;
+}
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
