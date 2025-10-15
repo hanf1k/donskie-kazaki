@@ -20,20 +20,29 @@
     </header>
 
     <main>
-        <h2>Архив документов</h2>
+        <h2>Архив документов второй половины XIX века</h2>
         <p>Здесь будут оцифрованные подборки из региональных архивов. Кликните для просмотра (пока placeholder'ы; добавьте реальные PDF позже).</p>
         <div class="archive-grid">
             <div class="document-placeholder" onclick="showModal('doc-modal-1')">
                 <img src="placeholder.jpg" alt="Placeholder документа">
-                <h3>Указы атамана Платова (1812 г.)</h3>
-                <p>Военные донесения и реформы.</p>
+                <h3>Войсковые приказы времен Крымской войны (1853-1856 гг.)</h3>
+                <p>Донесения о боевых действиях и организации казачьих полков.</p>
             </div>
             <div class="document-placeholder" onclick="showModal('doc-modal-2')">
                 <img src="placeholder.jpg" alt="Placeholder документа">
-                <h3>Устав Донского войска (1835 г.)</h3>
-                <p>Реформы и структура войска.</p>
+                <h3>Станичные приговоры и постановления (1860-1880 гг.)</h3>
+                <p>Документы казачьих кругов о землепользовании и службе.</p>
             </div>
-            <!-- Добавьте больше -->
+            <div class="document-placeholder" onclick="showModal('doc-modal-3')">
+                <img src="placeholder.jpg" alt="Placeholder документа">
+                <h3>Наградные листы участников Русско-турецкой войны (1877-1878 гг.)</h3>
+                <p>Описания подвигов казаков при освобождении Болгарии.</p>
+            </div>
+            <div class="document-placeholder" onclick="showModal('doc-modal-4')">
+                <img src="placeholder.jpg" alt="Placeholder документа">
+                <h3>Метрические книги станичных церквей (1870-1890 гг.)</h3>
+                <p>Записи о рождении, бракосочетании и смерти казаков.</p>
+            </div>
         </div>
     </main>
 
@@ -41,7 +50,7 @@
     <div id="doc-modal-1" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('doc-modal-1')">&times;</span>
-            <h3>Документ 1812 г.</h3>
+            <h3>Войсковые приказы времен Крымской войны (1853-1856 гг.)</h3>
             <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
             <!-- <iframe src="doc.pdf" width="100%" height="500px"></iframe> -->
         </div>
@@ -49,7 +58,21 @@
     <div id="doc-modal-2" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('doc-modal-2')">&times;</span>
-            <h3>Документ 1835 г.</h3>
+            <h3>Станичные приговоры и постановления (1860-1880 гг.)</h3>
+            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
+        </div>
+    </div>
+    <div id="doc-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('doc-modal-3')">&times;</span>
+            <h3>Наградные листы участников Русско-турецкой войны (1877-1878 гг.)</h3>
+            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
+        </div>
+    </div>
+    <div id="doc-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('doc-modal-4')">&times;</span>
+            <h3>Метрические книги станичных церквей (1870-1890 гг.)</h3>
             <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
         </div>
     </div>
