@@ -314,6 +314,123 @@ footer {
     animation: fadeInUp 1s ease-out 0.5s both;
 }
 
+/* Стили для страницы "О нас" */
+.about-section {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.about-section h3 {
+    color: #2c5a2c;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 0.5rem;
+}
+
+.partners-list {
+    list-style: none;
+    padding: 0;
+    background: #e6f3e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.partners-list li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.partners-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2c5a2c;
+    font-weight: bold;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.team-member {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #2c5a2c;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.team-member h4 {
+    color: #1a3a1a;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.team-member .role {
+    color: #8b4513;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+}
+
+.supervisor {
+    background: linear-gradient(135deg, #2c5a2c 0%, #8b4513 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.supervisor p {
+    margin: 0.5rem 0;
+}
+
+.supervisor .role {
+    color: #ffd700;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.goals-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.goals-list li {
+    background: white;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    border-left: 4px solid #ffd700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.goals-list li::before {
+    content: '→';
+    position: absolute;
+    left: 1rem;
+    color: #2c5a2c;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     header {
@@ -338,5 +455,8 @@ footer {
     }
     main {
         padding: 1rem;
+    }
+    .team-grid {
+        grid-template-columns: 1fr;
     }
 }
