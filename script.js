@@ -12,7 +12,7 @@ function toggleCard(cardId) {
 // Показать модальное окно с анимацией
 function showModal(modalId) {
     const modal = document.getElementById(modalId);
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
     setTimeout(() => modal.classList.add('show'), 10); // Небольшая задержка для плавности
 }
 
