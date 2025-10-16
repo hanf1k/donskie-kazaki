@@ -274,10 +274,12 @@ h1, h2 {
 
 .modal-content {
     background-color: white;
-    margin: 15% auto;
+    margin: 2rem auto;
     padding: 2rem;
-    width: 80%;
-    max-width: 800px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: 8px;
     position: relative;
     transform: scale(0.7);
