@@ -1,89 +1,91 @@
-// Показать/скрыть детали карточки
-function toggleCard(cardId) {
-    const details = document.getElementById(cardId);
-    if (details.style.display === 'block') {
-        details.style.animation = 'slideDown reverse 0.4s ease-out';
-        setTimeout(() => { details.style.display = 'none'; }, 400);
-    } else {
-        details.style.display = 'block';
-    }
-}
-
-// Показать модальное окно с анимацией
+// === Модальные окна ===
 function showModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('show'), 10); // Небольшая задержка для плавности
+    document.getElementById(modalId).style.display = 'block';
 }
 
-// Закрыть модальное окно с анимацией
 function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
+    document.getElementById(modalId).style.display = 'none';
 }
 
-// Закрытие модалки по клику вне неё
+// Закрытие по клику вне модала
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
-        closeModal(event.target.id);
+        event.target.style.display = 'none';
     }
 }
 
-// Анимации при скролле (Intersection Observer)
-document.addEventListener('DOMContentLoaded', function() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Наблюдаем за карточками
-    document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-    });
-
-    // Наблюдаем за элементами галереи
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        observer.observe(item);
-    });
-
-    // Наблюдаем за document-placeholder (для pulse, но они уже анимированы)
-    document.querySelectorAll('.document-placeholder').forEach(item => {
-        observer.observe(item);
-    });
-
-    // Функция для шаринга элемента (фото/документ)
+// === УЛУЧШЕННАЯ ФУНКЦИЯ ПОДЕЛИТЬСЯ ===
 async function shareItem(title, url, isImage = false) {
     const shareData = {
         title: title,
-        url: url,
-        text: isImage ? `Фото: ${title} из проекта "Казачья слава Дона"` : `Документ: ${title} из архива "Казачья слава Дона"`
+        text: isImage 
+            ? `Фото: ${title} из проекта "Казачья слава Дона"`
+            : `Документ: ${title} из архива "Казачья слава Дона"`,
+        url: url
     };
 
-    try {
-        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+    // 1. Пробуем нативный Web Share API
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        try {
             await navigator.share(shareData);
-        } else {
-            // Fallback: копируем URL в буфер
-            await navigator.clipboard.writeText(`${shareData.text}\n${url}`);
-            alert('URL скопирован в буфер обмена! Поделитесь им в любом приложении.');
+            console.log('Поделились через Web Share API');
+            return;
+        } catch (err) {
+            console.warn('Web Share API ошибка:', err);
         }
+    }
+
+    // 2. Fallback: копируем в буфер обмена
+    const textToCopy = `${shareData.text}\n${shareData.url}`;
+    try {
+        await navigator.clipboard.writeText(textToCopy);
+        showToast('Ссылка скопирована в буфер обмена! Поделитесь в любом приложении.');
     } catch (err) {
-        console.error('Ошибка шаринга:', err);
-        // Fallback для старых браузеров
-        const fallbackUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(url)}`;
-        window.open(fallbackUrl, '_blank');
+        // 3. Резервный fallback: открываем Twitter/X
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`;
+        window.open(twitterUrl, '_blank');
     }
 }
 
-// Пример вызова: shareItem('Название', 'https://example.com/url', true); // true для изображений
-});
+// === Уведомление (Toast) ===
+function showToast(message) {
+    // Удаляем старое уведомление
+    const oldToast = document.getElementById('toast');
+    if (oldToast) oldToast.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #2c5a2c;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        animation: fadeInOut 3s forwards;
+    `;
+
+    document.body.appendChild(toast);
+
+    // Анимация исчезновения
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            15%, 85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Удаляем через 3 секунды
+    setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+        if (style.parentNode) style.parentNode.removeChild(style);
+    }, 3000);
+}
