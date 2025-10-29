@@ -48,16 +48,32 @@
     </main>
 
     <!-- Модальные окна (исправлены крестики и ссылки) -->
-    <div id="doc-modal-1" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('doc-modal-1')">&times;</span>
-            <h3>Войсковые приказы времен Крымской войны (1853-1856 гг.)</h3>
-            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
-            <a href="https://api.whatsapp.com/send?text=Войсковые%20приказы%20времен%20Крымской%20войны%20(1853-1856%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/documents.html" class="share-whatsapp" target="_blank">Поделиться в WhatsApp</a>
-            <a href="https://t.me/share/url?url=https://hanf1k.github.io/documents.html&text=Войсковые%20приказы%20времен%20Крымской%20войны%20(1853-1856%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»" class="share-telegram" target="_blank">Поделиться в Telegram</a>
-            <a href="https://vk.com/share.php?url=https://hanf1k.github.io/documents.html&title=Войсковые приказы времен Крымской войны (1853-1856 гг.)&description=Донесения о боевых действиях и организации казачьих полков из архива Казачья слава Дона" class="vk-share-btn" target="_blank">Поделиться в VK</a>
+<!-- МОДАЛКА 1: ПРИКАЗЫ ПО ГАРНИЗОНУ СЕВАСТОПОЛЯ -->
+<div id="doc-modal-1" class="modal">
+    <div class="modal-content pdf-modal">
+        <span class="close" onclick="closeModal('doc-modal-1')">×</span>
+        <h3>Приказы по гарнизону Севастополя (1875 г.)</h3>
+        <p>Оригинальный документ из архива донских казаков. Нажмите на значок ↓ внизу, чтобы скачать.</p>
+        
+        <!-- ВСТРОЕННЫЙ PDF-ПРОСМОТРЩИК -->
+        <iframe src="prikazy-po-garnizonu-sevastopolya.pdf" 
+                width="100%" 
+                height="600px" 
+                style="border: none; border-radius: 10px;"
+                title="Приказы по гарнизону Севастополя">
+        </iframe>
+
+        <!-- КНОПКИ ПОД PDF -->
+        <div class="pdf-actions">
+            <a href="prikazy-po-garnizonu-sevastopolya.pdf" download class="btn-download">
+                Скачать PDF
+            </a>
+            <a href="https://api.whatsapp.com/send?text=Документ: Приказы по гарнизону Севастополя (1875) — из архива «Казачья слава Дона»%0Ahttps://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://t.me/share/url?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&text=Документ: Приказы по гарнизону Севастополя (1875)" class="share-telegram" target="_blank">Telegram</a>
+            <a href="https://vk.com/share.php?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&title=Приказы по гарнизону Севастополя" class="vk-share-btn" target="_blank">VK</a>
         </div>
     </div>
+</div>
     <div id="doc-modal-2" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('doc-modal-2')">&times;</span>
