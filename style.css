@@ -485,18 +485,19 @@ footer {
 }
 
 .don-flag img {
-    max-width: 300px;
-    width: 100%;
+    max-width: 300px;          /* фиксируем максимум */
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0,0,0,.2);
     border: 3px solid #ffd700;
+    transition: transform .3s ease;
+    display: block;
+    margin: 0 auto;            /* центрируем */
 }
 
 .don-flag img:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
 }
 
 .don-flag p {
@@ -504,24 +505,15 @@ footer {
     font-weight: bold;
     color: #ffd700;
     font-size: 1.1rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .don-flag img {
-        max-width: 220px;
-    }
-    .don-flag p {
-        font-size: 1rem;
-    }
+    .don-flag img { max-width: 220px; }
+    .don-flag p   { font-size: 1rem; }
 }
-
 @media (max-width: 480px) {
-    .don-flag img {
-        max-width: 180px;
-    }
-    .don-flag p {
-        font-size: 0.95rem;
-    }
+    .don-flag img { max-width: 180px; }
+    .don-flag p   { font-size: .95rem; }
 }
