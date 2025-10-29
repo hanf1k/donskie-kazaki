@@ -474,6 +474,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 /* === Флаг Войска Донского === */
 .don-flag {
     text-align: center;
