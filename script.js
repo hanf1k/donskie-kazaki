@@ -60,4 +60,30 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.document-placeholder').forEach(item => {
         observer.observe(item);
     });
+
+    // Функция для шаринга элемента (фото/документ)
+async function shareItem(title, url, isImage = false) {
+    const shareData = {
+        title: title,
+        url: url,
+        text: isImage ? `Фото: ${title} из проекта "Казачья слава Дона"` : `Документ: ${title} из архива "Казачья слава Дона"`
+    };
+
+    try {
+        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+            await navigator.share(shareData);
+        } else {
+            // Fallback: копируем URL в буфер
+            await navigator.clipboard.writeText(`${shareData.text}\n${url}`);
+            alert('URL скопирован в буфер обмена! Поделитесь им в любом приложении.');
+        }
+    } catch (err) {
+        console.error('Ошибка шаринга:', err);
+        // Fallback для старых браузеров
+        const fallbackUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(url)}`;
+        window.open(fallbackUrl, '_blank');
+    }
+}
+
+// Пример вызова: shareItem('Название', 'https://example.com/url', true); // true для изображений
 });
