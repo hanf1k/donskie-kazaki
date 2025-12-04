@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ + ПЛЕЕР (ДОБАВЛЕНО!) -->
+    <div class="theme-switcher">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="toggle-label">
+            <span class="sun">☀️</span>
+            <span class="moon">🌙</span>
+        </label>
+    </div>
+    <div class="sound-control">
+        <button id="sound-btn">🔊 Любо, братцы, любо!</button>
+        <audio id="cossack-song" loop>
+            <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <header>
         <h1>Казачья слава Дона</h1>
         <nav>
@@ -22,94 +37,123 @@
 
     <main>
         <h2>Архив документов второй половины XIX века</h2>
-        <p>Здесь будут оцифрованные подборки из региональных архивов. Кликните для просмотра.</p>
+        <p>Оригинальные документы из государственных и станичных архивов. Кликните на карточку для просмотра.</p>
+
         <div class="archive-grid">
+            <!-- 1. ВОЙСКОВЫЕ ПРИКАЗЫ — С РАБОЧИМ PDF -->
             <div class="document-placeholder" onclick="showModal('doc-modal-1')">
                 <img src="prikazy-po-garnizonu-sevastopolya.jpg" alt="Войсковые приказы">
                 <div class="doc-title">
-                <h4>Войсковые приказы</h4>
-                <p>Крымская война (1853–1856)</p>
+                    <h4>Войсковые приказы</h4>
+                    <p>Крымская война (1853–1856)</p>
+                </div>
             </div>
+
+            <!-- 2. Станичные приговоры -->
             <div class="document-placeholder" onclick="showModal('doc-modal-2')">
-                <img src="placeholder.jpg" alt="Placeholder документа">
-                <h3>Станичные приговоры и постановления (1860-1880 гг.)</h3>
-                <p>Документы казачьих кругов о землепользовании и службе.</p>
+                <img src="placeholder.jpg" alt="Станичные приговоры">
+                <div class="doc-title">
+                    <h4>Станичные приговоры</h4>
+                    <p>Землепользование и служба (1860–1880)</p>
+                </div>
             </div>
+
+            <!-- 3. Наградные листы -->
             <div class="document-placeholder" onclick="showModal('doc-modal-3')">
-                <img src="placeholder.jpg" alt="Placeholder документа">
-                <h3>Наградные листы участников Русско-турецкой войны (1877-1878 гг.)</h3>
-                <p>Описания подвигов казаков при освобождении Болгарии.</p>
+                <img src="placeholder.jpg" alt="Наградные листы">
+                <div class="doc-title">
+                    <h4>Наградные листы</h4>
+                    <p>Русско-турецкая война (1877–1878)</p>
+                </div>
             </div>
+
+            <!-- 4. Метрические книги -->
             <div class="document-placeholder" onclick="showModal('doc-modal-4')">
-                <img src="placeholder.jpg" alt="Placeholder документа">
-                <h3>Метрические книги станичных церквей (1870-1890 гг.)</h3>
-                <p>Записи о рождении, бракосочетании и смерти казаков.</p>
+                <img src="placeholder.jpg" alt="Метрические книги">
+                <div class="doc-title">
+                    <h4>Метрические книги</h4>
+                    <p>Рождения, браки, смерти (1870–1890)</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Модальные окна (исправлены крестики и ссылки) -->
-<!-- МОДАЛКА 1: ПРИКАЗЫ ПО ГАРНИЗОНУ СЕВАСТОПОЛЯ -->
-<div id="doc-modal-1" class="modal">
-    <div class="modal-content pdf-modal">
-        <span class="close" onclick="closeModal('doc-modal-1')">×</span>
-        <h3>Приказы по гарнизону Севастополя (1875 г.)</h3>
-        <p>Оригинальный документ из архива донских казаков. Нажмите на значок ↓ внизу, чтобы скачать.</p>
-        
-        <!-- ВСТРОЕННЫЙ PDF-ПРОСМОТРЩИК -->
-        <iframe src="prikazy-po-garnizonu-sevastopolya.pdf" 
-                width="100%" 
-                height="600px" 
-                style="border: none; border-radius: 10px;"
-                title="Приказы по гарнизону Севастополя">
-        </iframe>
+    <!-- ========== МОДАЛЬНЫЕ ОКНА ========== -->
+    <!-- 1. С РАБОЧИМ PDF -->
+    <div id="doc-modal-1" class="modal">
+        <div class="modal-content pdf-modal">
+            <span class="close" onclick="closeModal('doc-modal-1')">×</span>
+            <h3>Войсковые приказы времен Крымской войны (1853–1856 гг.)</h3>
+            <p>Донесения о боевых действиях и организации казачьих полков.</p>
 
-        <!-- КНОПКИ ПОД PDF -->
-        <div class="pdf-actions">
-            <a href="prikazy-po-garnizonu-sevastopolya.pdf" download class="btn-download">
-                Скачать PDF
-            </a>
-            <a href="https://api.whatsapp.com/send?text=Документ: Приказы по гарнизону Севастополя (1875) — из архива «Казачья слава Дона»%0Ahttps://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
-            <a href="https://t.me/share/url?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&text=Документ: Приказы по гарнизону Севастополя (1875)" class="share-telegram" target="_blank">Telegram</a>
-            <a href="https://vk.com/share.php?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&title=Приказы по гарнизону Севастополя" class="vk-share-btn" target="_blank">VK</a>
+            <iframe src="prikazy-po-garnizonu-sevastopolya.pdf" 
+                    width="100%" 
+                    height="650px" 
+                    style="border: none; border-radius: 12px;"
+                    title="Приказы по гарнизону Севастополя">
+            </iframe>
+
+            <div class="pdf-actions">
+                <a href="prikazy-po-garnizonu-sevastopolya.pdf" download class="btn-download">
+                    Скачать PDF
+                </a>
+                <a href="https://api.whatsapp.com/send?text=Войсковые%20приказы%20Крымской%20войны%20(1853–1856)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://t.me/share/url?url=https://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf&text=Войсковые приказы Крымской войны" class="share-telegram" target="_blank">Telegram</a>
+                <a href="https://vk.com/share.php?url=https://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf&title=Войсковые приказы Крымской войны" class="vk-share-btn" target="_blank">VK</a>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- Остальные модалки (2,3,4) — как у тебя было, только почищены -->
     <div id="doc-modal-2" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('doc-modal-2')">&times;</span>
-            <h3>Станичные приговоры и постановления (1860-1880 гг.)</h3>
-            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
-            <a href="https://api.whatsapp.com/send?text=Станичные%20приговоры%20и%20постановления%20(1860-1880%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/documents.html" class="share-whatsapp" target="_blank">Поделиться в WhatsApp</a>
-            <a href="https://t.me/share/url?url=https://hanf1k.github.io/documents.html&text=Станичные%20приговоры%20и%20постановления%20(1860-1880%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»" class="share-telegram" target="_blank">Поделиться в Telegram</a>
-            <a href="https://vk.com/share.php?url=https://hanf1k.github.io/documents.html&title=Станичные приговоры и постановления (1860-1880 гг.)&description=Документы казачьих кругов о землепользовании и службе из архива Казачья слава Дона" class="vk-share-btn" target="_blank">Поделиться в VK</a>
-        </div>
-    </div>
-    <div id="doc-modal-3" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('doc-modal-3')">&times;</span>
-            <h3>Наградные листы участников Русско-турецкой войны (1877-1878 гг.)</h3>
-            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
-            <a href="https://api.whatsapp.com/send?text=Наградные%20листы%20участников%20Русско-турецкой%20войны%20(1877-1878%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/documents.html" class="share-whatsapp" target="_blank">Поделиться в WhatsApp</a>
-            <a href="https://t.me/share/url?url=https://hanf1k.github.io/documents.html&text=Наградные%20листы%20участников%20Русско-турецкой%20войны%20(1877-1878%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»" class="share-telegram" target="_blank">Поделиться в Telegram</a>
-            <a href="https://vk.com/share.php?url=https://hanf1k.github.io/documents.html&title=Наградные листы участников Русско-турецкой войны (1877-1878 гг.)&description=Описания подвигов казаков при освобождении Болгарии из архива Казачья слава Дона" class="vk-share-btn" target="_blank">Поделиться в VK</a>
-        </div>
-    </div>
-    <div id="doc-modal-4" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('doc-modal-4')">&times;</span>
-            <h3>Метрические книги станичных церквей (1870-1890 гг.)</h3>
-            <p>Здесь будет оцифрованный текст или PDF. (Placeholder)</p>
-            <a href="https://api.whatsapp.com/send?text=Метрические%20книги%20станичных%20церквей%20(1870-1890%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/documents.html" class="share-whatsapp" target="_blank">Поделиться в WhatsApp</a>
-            <a href="https://t.me/share/url?url=https://hanf1k.github.io/documents.html&text=Метрические%20книги%20станичных%20церквей%20(1870-1890%20гг.)%20—%20из%20архива%20«Казачья%20слава%20Дона»" class="share-telegram" target="_blank">Поделиться в Telegram</a>
-            <a href="https://vk.com/share.php?url=https://hanf1k.github.io/documents.html&title=Метрические книги станичных церквей (1870-1890 гг.)&description=Записи о рождении, бракосочетании и смерти казаков из архива Казачья слава Дона" class="vk-share-btn" target="_blank">Поделиться в VK</a>
+            <span class="close" onclick="closeModal('doc-modal-2')">×</span>
+            <h3>Станичные приговоры и постановления (1860–1880 гг.)</h3>
+            <p>Документ готовится к оцифровке</p>
+            <div class="coming-soon">PDF скоро будет доступен</div>
         </div>
     </div>
 
-    <footer>
+    <div id="doc-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('doc-modal-3')">×</span>
+            <h3>Наградные листы участников Русско-турецкой войны (1877–1878 гг.)</h3>
+            <p>Документ в обработке</p>
+            <div class="coming-soon">PDF скоро будет доступен</div>
+        </div>
+    </div>
+
+    <div id="doc-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('doc-modal-4')">×</span>
+            <h3>Метрические книги станичных церквей (1870–1890 гг.)</h3>
+            <p>Оцифровка в процессе</p>
+            <div class="coming-soon">PDF скоро будет доступен</div>
+        </div>
+    </div>
+
+<footer>
         <p>&copy; 2025 Казачья слава Дона. Все права защищены.</p>
     </footer>
 
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ И ПЛЕЕР (обязательно!) -->
+    <div class="theme-switcher">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="toggle-label">
+            <span class="sun">☀️</span>
+            <span class="moon">🌙</span>
+        </label>
+    </div>
+
+    <div class="sound-control">
+        <button id="sound-btn">🔊 Любо, братцы, любо!</button>
+        <audio id="cossack-song" loop>
+            <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- СНАЧАЛА СТИЛИ, ПОТОМ СКРИПТ -->
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </body>
 </html>
