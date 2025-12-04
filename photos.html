@@ -665,48 +665,27 @@
         </div>
     </div>
 </main>
-
-<!-- === СКРИПТЫ (ОБЯЗАТЕЛЬНО В КОНЦЕ) === -->
-<script>
-    // Открытие модала
-    function showModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "flex";
-        setTimeout(() => modal.classList.add('show'), 10);
-    }
-
-    // Закрытие модала
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.remove('show');
-        setTimeout(() => modal.style.display = "none", 300);
-    }
-
-    // Закрытие при клике вне изображения
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            closeModal(event.target.id);
-        }
-    }
-
-    // Анимация при скролле
-    document.addEventListener('DOMContentLoaded', function() {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.gallery-item').forEach(item => observer.observe(item));
-    });
-</script>
-
 <footer>
     <p>&copy; 2025 Казачья слава Дона. Все права защищены.</p>
 </footer>
 
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ + ПЛЕЕР — РАБОЧИЙ ВАРИАНТ -->
+<div class="theme-switcher">
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle" class="toggle-label">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+    </label>
+</div>
+
+<div class="sound-control">
+    <button id="sound-btn">🔊 Любо, братцы, любо!</button>
+    <audio id="cossack-song" loop>
+        <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- === СКРИПТЫ (ОБЯЗАТЕЛЬНО В КОНЦЕ) === -->
+<script src="script.js"></script>
 </body>
 </html>
