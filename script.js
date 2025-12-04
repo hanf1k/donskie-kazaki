@@ -62,18 +62,50 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Анимация карточек "О нас"
-document.addEventListener('DOMContentLoaded', function() {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
+// === ТЁМНАЯ ТЕМА + ПЛЕЕР — РАБОТАЕТ НА ВСЕХ СТРАНИЦАХ ===
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ——— ТЁМНАЯ ТЕМА ———
+    const themeToggle = document.getElementById('theme-toggle');
+
+    if (themeToggle) {
+        // Восстанавливаем сохранённую тему
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.checked = true;
+        }
+
+        // Переключение
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
             }
         });
-    }, { threshold: 0.1 });
+    }
 
-    document.querySelectorAll('.about-card').forEach(card => {
-        observer.observe(card);
-    });
+    // ——— ПЛЕЕР "ЛЮБО!" ———
+    const soundBtn = document.getElementById('sound-btn');
+    const audio = document.getElementById('cossack-song');
+
+    if (soundBtn && audio) {
+        let playing = false;
+
+        soundBtn.addEventListener('click', () => {
+            if (playing) {
+                audio.pause();
+                soundBtn.textContent = '🔊 Любо, братцы, любо!';
+                playing = false;
+            } else {
+                audio.play().catch(() => {
+                    alert('Нажмите ещё раз — браузер требует подтверждение для звука');
+                });
+                soundBtn.textContent = '🔇 Выключить';
+                playing = true;
+            }
+        });
+    }
 });

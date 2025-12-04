@@ -7,21 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ + ПЛЕЕР (ДОБАВЛЕНО!) -->
-    <div class="theme-switcher">
-        <input type="checkbox" id="theme-toggle">
-        <label for="theme-toggle" class="toggle-label">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-        </label>
-    </div>
-    <div class="sound-control">
-        <button id="sound-btn">🔊 Любо, братцы, любо!</button>
-        <audio id="cossack-song" loop>
-            <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
     <header>
         <h1>Казачья слава Дона</h1>
         <nav>
@@ -40,6 +25,7 @@
         <p>Оригинальные документы из государственных и станичных архивов. Кликните на карточку для просмотра.</p>
 
         <div class="archive-grid">
+
             <!-- 1. ВОЙСКОВЫЕ ПРИКАЗЫ — С РАБОЧИМ PDF -->
             <div class="document-placeholder" onclick="showModal('doc-modal-1')">
                 <img src="prikazy-po-garnizonu-sevastopolya.jpg" alt="Войсковые приказы">
@@ -49,16 +35,16 @@
                 </div>
             </div>
 
-            <!-- 2. Станичные приговоры -->
+            <!-- 2. ВОЙСКОВОЙ АРХИВ КУБАНСКОГО ВОЙСКА -->
             <div class="document-placeholder" onclick="showModal('doc-modal-2')">
                 <img src="placeholder.jpg" alt="Станичные приговоры">
                 <div class="doc-title">
-                    <h4>Станичные приговоры</h4>
-                    <p>Землепользование и служба (1860–1880)</p>
+                    <h4>Войсковой архив Кубанского войска</h4>
+                    <p>Войсковой архив Кубанского войска второй половиный 19 века</p>
                 </div>
             </div>
 
-            <!-- 3. Наградные листы -->
+            <!-- 3. НАГРАДНЫЕ ЛИСТЫ -->
             <div class="document-placeholder" onclick="showModal('doc-modal-3')">
                 <img src="placeholder.jpg" alt="Наградные листы">
                 <div class="doc-title">
@@ -67,7 +53,7 @@
                 </div>
             </div>
 
-            <!-- 4. Метрические книги -->
+            <!-- 4. МЕТРИЧЕСКИЕ КНИГИ -->
             <div class="document-placeholder" onclick="showModal('doc-modal-4')">
                 <img src="placeholder.jpg" alt="Метрические книги">
                 <div class="doc-title">
@@ -75,10 +61,12 @@
                     <p>Рождения, браки, смерти (1870–1890)</p>
                 </div>
             </div>
+
         </div>
     </main>
 
     <!-- ========== МОДАЛЬНЫЕ ОКНА ========== -->
+
     <!-- 1. С РАБОЧИМ PDF -->
     <div id="doc-modal-1" class="modal">
         <div class="modal-content pdf-modal">
@@ -97,63 +85,93 @@
                 <a href="prikazy-po-garnizonu-sevastopolya.pdf" download class="btn-download">
                     Скачать PDF
                 </a>
-                <a href="https://api.whatsapp.com/send?text=Войсковые%20приказы%20Крымской%20войны%20(1853–1856)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
-                <a href="https://t.me/share/url?url=https://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf&text=Войсковые приказы Крымской войны" class="share-telegram" target="_blank">Telegram</a>
-                <a href="https://vk.com/share.php?url=https://hanf1k.github.io/prikazy-po-garnizonu-sevastopolya.pdf&title=Войсковые приказы Крымской войны" class="vk-share-btn" target="_blank">VK</a>
+                <a href="https://api.whatsapp.com/send?text=Войсковые%20приказы%20Крымской%20войны%20(1853–1856)%20—%20из%20архива%20«Казачья%20слава%20Дона»%0Ahttps://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://t.me/share/url?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&text=Войсковые приказы Крымской войны" class="share-telegram" target="_blank">Telegram</a>
+                <a href="https://vk.com/share.php?url=https://yoursite.com/prikazy-po-garnizonu-sevastopolya.pdf&title=Войсковые приказы Крымской войны" class="vk-share-btn" target="_blank">VK</a>
             </div>
         </div>
     </div>
 
-    <!-- Остальные модалки (2,3,4) — как у тебя было, только почищены -->
-    <div id="doc-modal-2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('doc-modal-2')">×</span>
-            <h3>Станичные приговоры и постановления (1860–1880 гг.)</h3>
-            <p>Документ готовится к оцифровке</p>
-            <div class="coming-soon">PDF скоро будет доступен</div>
+   <div id="doc-modal-2" class="modal">
+    <div class="modal-content pdf-modal">
+        <span class="close" onclick="closeModal('doc-modal-2')">×</span>
+        <h3>Войсковой архив Кубанского войска</h3>
+        <p>Оригинальный документ из архива кубанских казаков. Нажмите на значок ↓ внизу, чтобы скачать.</p>
+        
+        <!-- ВСТРОЕННЫЙ PDF-ПРОСМОТРЩИК -->
+        <iframe src="kuban.pdf" 
+                width="100%" 
+                height="600px" 
+                style="border: none; border-radius: 10px;"
+                title="Войсковой архив Кубанского войска">
+        </iframe>
+
+        <!-- КНОПКИ ПОД PDF -->
+        <div class="pdf-actions">
+            <a href="kuban.pdf" download class="btn-download">
+                Скачать PDF
+            </a>
+            <a href="https://api.whatsapp.com/send?text=Документ: Войсковой архив Кубанского войска — из архива «Казачья слава Дона»%0Ahttps://казачьяславадона.рф/index.html/kuban.pdf" class="share-whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://t.me/share/url?url=https://казачьяславадона.рф/index.html/kuban.pdf&text=Документ: Войсковой архив Кубанского войска" class="share-telegram" target="_blank">Telegram</a>
+            <a href="https://vk.com/share.php?url=https://казачьяславадона.рф/index.html/kuban.pdf&title=Войсковой архив Кубанского войска" class="vk-share-btn" target="_blank">VK</a>
         </div>
     </div>
 
+    <!-- 3. Заглушка -->
     <div id="doc-modal-3" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('doc-modal-3')">×</span>
             <h3>Наградные листы участников Русско-турецкой войны (1877–1878 гг.)</h3>
-            <p>Документ в обработке</p>
-            <div class="coming-soon">PDF скоро будет доступен</div>
+            <p>Описания подвигов донских казаков при освобождении Болгарии.</p>
+            <div class="coming-soon">
+                <p>Документ в обработке</p>
+            </div>
+            <div class="pdf-actions">
+                <a href="#" class="btn-download disabled" onclick="return false;">PDF скоро</a>
+                <a href="https://api.whatsapp.com/send?text=Наградные%20листы%20Русско-турецкой%20войны%20—%20скоро%20в%20архиве" class="share-whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://t.me/share/url?url=https://yoursite.com/documents.html&text=Наградные листы 1877–1878" class="share-telegram" target="_blank">Telegram</a>
+                <a href="https://vk.com/share.php?url=https://yoursite.com/documents.html&title=Наградные листы" class="vk-share-btn" target="_blank">VK</a>
+            </div>
         </div>
     </div>
 
+    <!-- 4. Заглушка -->
     <div id="doc-modal-4" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('doc-modal-4')">×</span>
             <h3>Метрические книги станичных церквей (1870–1890 гг.)</h3>
-            <p>Оцифровка в процессе</p>
-            <div class="coming-soon">PDF скоро будет доступен</div>
+            <p>Записи о рождении, бракосочетании и смерти казаков.</p>
+            <div class="coming-soon">
+                <p>Оцифровка в процессе</p>
+            </div>
+            <div class="pdf-actions">
+                <a href="#" class="btn-download disabled" onclick="return false;">PDF скоро</a>
+                <a href="https://api.whatsapp.com/send?text=Метрические%20книги%20станиц%20(1870–1890)%20—%20скоро%20в%20архиве" class="share-whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://t.me/share/url?url=https://yoursite.com/documents.html&text=Метрические книги 1870–1890" class="share-telegram" target="_blank">Telegram</a>
+                <a href="https://vk.com/share.php?url=https://yoursite.com/documents.html&title=Метрические книги" class="vk-share-btn" target="_blank">VK</a>
+            </div>
         </div>
     </div>
 
-<footer>
+    <footer>
         <p>&copy; 2025 Казачья слава Дона. Все права защищены.</p>
     </footer>
 
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ И ПЛЕЕР (обязательно!) -->
-    <div class="theme-switcher">
-        <input type="checkbox" id="theme-toggle">
-        <label for="theme-toggle" class="toggle-label">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-        </label>
-    </div>
+<!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ И ПЛЕЕР -->
+<div class="theme-switcher">
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle" class="toggle-label">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+    </label>
+</div>
 
-    <div class="sound-control">
-        <button id="sound-btn">🔊 Любо, братцы, любо!</button>
-        <audio id="cossack-song" loop>
-            <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <!-- СНАЧАЛА СТИЛИ, ПОТОМ СКРИПТ -->
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+<div class="sound-control">
+    <button id="sound-btn">🔊 Любо!</button>
+    <audio id="cossack-song" loop>
+        <source src="Moskovskijj_Kazachijj_KHor_-_Lyubo_bratcy_lyubo_70411936.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
